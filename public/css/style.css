@@ -1,0 +1,27 @@
+body{
+	background: #f2f2f2;
+	padding-top: 70px; 
+}
+
+.contenido {
+	margin-top: 100px;
+
+
+}
+
+.hola{
+	margin-top: 50px;
+}
+
+.navbar-default {
+	background: #0277BD;
+	border: 1px solid #0277BD;
+	border-radius: 0;
+}
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus,
+.navbar-default .navbar-text {
+	color: #FFFFFF;
+}

@@ -1,0 +1,5 @@
+Plugin notify
+http://bootstrap-notify.remabledesigns.com/
+
+Documentacion Template
+https://adminlte.io/themes/AdminLTE/documentation/
