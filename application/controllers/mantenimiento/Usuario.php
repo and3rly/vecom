@@ -14,7 +14,7 @@ class Usuario extends CI_Controller {
 
 	public function index()
 	{
-		$this->datos['vista'] = 'usuario/cuerpo';
+		$this->datos['vista'] = 'mantenimiento/usuario/cuerpo';
 		$this->datos['titulo']  = 'Usuarios';
 		$this->load->view('principal', $this->datos);
 		
@@ -35,7 +35,7 @@ class Usuario extends CI_Controller {
 			$form->set_registro($u->usuario);
 		}
 		
-		$this->load->view('usuario/form', [
+		$this->load->view('mantenimiento/usuario/form', [
 			'form' => (object) $form->formulario()
 		]);
 	}
@@ -78,7 +78,7 @@ class Usuario extends CI_Controller {
 
 	public function ver_lista()
 	{
-		$this->load->view('usuario/lista', [
+		$this->load->view('mantenimiento/usuario/lista', [
 			'resultado' => $this->Usuario_model->get_usuarios()
 		]);
 	}

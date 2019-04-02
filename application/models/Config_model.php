@@ -40,6 +40,24 @@ class Config_model extends CI_Model
 		return false;
 	}
 
+	public function get_moneda($args=[])
+	{
+		if(isset($args['moneda'])){
+			$this->db->where('moneda',$args['moneda']);
+		}
+
+		$tmp = $this->db
+					->get('moneda');
+
+		if (isset($args['uno'])) {
+			return $tmp->row();
+		}else{
+			return $tmp->result();
+		}
+
+		return false;
+	}
+
 	public function get_pais($args=[])
 	{
 		if (isset($args['pais'])) {

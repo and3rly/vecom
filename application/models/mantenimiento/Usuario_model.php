@@ -49,14 +49,10 @@ class Usuario_model extends CI_Model {
 			$this->db->set('direccion', $args['direccion']);
 		}
 
-		#if (elemento($args, 'jefe')){
-			$this->db->set('jefe', elemento($args, 'jefe', 0));
-		#}
-
-		#if (elemento($args, 'subjefe')){
-			$this->db->set('subjefe',elemento($args, 'subjefe', 0));
-		#}
-
+		$this->db->set('jefe', elemento($args, 'jefe', 0));
+		
+		$this->db->set('subjefe',elemento($args, 'subjefe', 0));
+		
 		if (elemento($args, 'rol')){
 			$this->db->set('rol', $args['rol']);
 		}

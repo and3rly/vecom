@@ -74,10 +74,10 @@ function abrirPagina(args)
 			url = base_url('index.php/mantenimiento/usuario/ver_lista')
 		break
 		case 3:
-			url = base_url('index.php/mante/empresa/form') 
+			url = base_url('index.php/mantenimiento/empresa/form') 
 		break
 		case 4:
-			url = base_url('index.php/mante/empresa/ver_lista') 
+			url = base_url('index.php/mantenimiento/empresa/ver_lista') 
 		break
 	}
 
@@ -123,8 +123,8 @@ $(document).on("submit", "#formGuardar", function(e) {
 			}
 
 			if (res.form == 3) {
-				abrirPagina({tipo: res.lista, div:'ListaManteEmpresas'})
-				abrirPagina({tipo: res.form, div:'contenidoManteEmpresas'})
+				abrirPagina({tipo: res.lista, div:'ListaManteEmpresa'})
+				abrirPagina({tipo: res.form, div:'contenidoManteEmpresa'})
 			}
 
 		} else {
