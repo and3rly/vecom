@@ -76,6 +76,23 @@ class Config_model extends CI_Model
 		return false;
 	}
 	
+	public function get_cliente_tipo($args=[])
+	{
+		if (isset($args['cliente_tipo'])) {
+			$this->db->where('cliente_tipo', $args['cliente_tipo']);
+		}
+
+		$tmp = $this->db
+					->get('cliente_tipo');
+
+		if (isset($args['uno'])) {
+			return $tmp->row();
+		}else{
+			return $tmp->result();
+		}
+
+		return false;
+	}
 
 }
 
