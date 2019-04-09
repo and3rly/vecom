@@ -7,7 +7,7 @@
 			<td><?php echo $row->direccion; ?></td>
 			<td><?php echo $row->telefono; ?></td>
 			<td><?php echo $row->correo; ?></td>	
-			<td><?php echo $row->cliente_tipo; ?></td>		
+			<td><?php echo $row->cliente_tipo_nombre; ?></td>		
 			<td><?php echo $row->empresa; ?></td>
 			<td><?php echo $row->aplica_descuento; ?></td>	
 			<td><?php echo $row->monto_descuento; ?></td>
@@ -27,7 +27,7 @@
 
 				<button
 					class="btn btn-xs btn-danger"
-					onclick="anularCliente(<?php echo $row->cliente ?>)">
+					onclick="eliminar_cliente(<?php echo $row->cliente ?>)">
 					<i class="glyphicon glyphicon-trash" ></i>	
 				</button>
 			</td>

@@ -88,7 +88,7 @@ class Cliente_model extends CI_Model {
 
 	public function get_clientes()
 	{
-		$tmp = $this->db->select('a.*, b.nombre as empresa, c.nombre as cliente_tipo')
+		$tmp = $this->db->select('a.*, b.nombre as empresa, c.nombre as cliente_tipo_nombre')
 						->from('cliente a')
 						->join('empresa b','b.empresa = a.empresa')
 						->join('cliente_tipo c','c.cliente_tipo = a.cliente_tipo')

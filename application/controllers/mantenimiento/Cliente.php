@@ -21,7 +21,7 @@ class Cliente extends CI_Controller {
 
 	public function form($cliente='')
 	{
-		$c = new Cliente_model();
+		$c = new Cliente_model($cliente);
 		$this->load->library('forms/Fcliente');
 
 		$form = new Fcliente();
@@ -59,12 +59,12 @@ class Cliente extends CI_Controller {
 
 			if ($c->guardarCliente($_POST)) {
 			
- 				$dato['mensaje'] = 'El usuario fue ingresado correctamente';
+ 				$dato['mensaje'] = 'El cliente fue ingresado correctamente';
 				$dato['exito']   = 1;
 				$dato['registro'] = $c->cliente->cliente;
 				
 			} else {
-				$dato['mensaje'] = 'Intente guardar de nuevo el usuario';
+				$dato['mensaje'] = 'Intente guardar de nuevo el cliente';
 			}
 
 		} else {
@@ -82,7 +82,7 @@ class Cliente extends CI_Controller {
 		]);
 	}
 
-	public function anularcliente()
+	public function anulacliente()
 	{
 		$dato = array(
 			'exito' => false, 
@@ -102,6 +102,7 @@ class Cliente extends CI_Controller {
 		}
 			
 		enviarJson($dato);
+		
 	}
 }
 

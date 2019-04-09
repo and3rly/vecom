@@ -66,14 +66,14 @@ function anularEmpresa(empresa)
 	}
 }
 
-function anularCliente(cliente)
-{	
+function eliminar_cliente(cliente)
+{
 	if (confirm('¿Esta seguro de eliminar el cliente?')) {
 		var xhr   = new XMLHttpRequest()
 		var datos = new FormData()
 		datos.append('cliente', cliente)
 
-		xhr.open("POST", base_url("index.php/mante/cliente/anularcliente"), true)
+		xhr.open("POST", base_url("index.php/mantenimiento/cliente/anulacliente"), true)
 		xhr.onload = function() {
 			var res = JSON.parse(this.responseText)
 			notificar(res.mensaje, res.exito);
@@ -85,3 +85,31 @@ function anularCliente(cliente)
 		xhr.send(datos)
 	}
 }
+
+function anularCliente(cliente)
+{	
+	if (confirm('¿Esta seguro de eliminar el cliente?')) {
+		var xhr   = new XMLHttpRequest()
+		var datos = new FormData()
+		datos.append('cliente', cliente)
+
+		xhr.open("POST", base_url("index.php/mantenimiento/cliente/anulacliente"), true)
+		xhr.onload = function() {
+			var res = JSON.parse(this.responseText)
+			notificar(res.mensaje, res.exito);
+
+			if (res.exito) {
+				abrirPagina({tipo: res.lista, div:'ListaManteCliente'})
+			}
+		}
+		xhr.send(datos)
+	}
+}
+
+	$(document).on("click","[name=aplica_descuento]", function() {
+		if (this.checked) {
+			$("#divmontodescuento").show()
+		} else {
+			$("#divmontodescuento").hide()
+		}
+	})

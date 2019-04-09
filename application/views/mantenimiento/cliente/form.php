@@ -44,9 +44,11 @@
 		</div>
 
 		<div class="form-group form-group-sm">
-			<?php echo $form->label_monto_descuento; ?>
-			<div class="col-sm-4"><?php echo $form->input_monto_descuento; ?></div>
-
+			<div id="divmontodescuento" style="display: none;">
+				<?php echo $form->label_monto_descuento; ?>
+				<div class="col-sm-4"><?php echo $form->input_monto_descuento; ?></div>
+			</div>
+			
 			<?php echo $form->label_iva; ?>
 			<div class="col-sm-4"><?php echo $form->input_iva; ?> </div>						
 		</div>
@@ -67,3 +69,4 @@
 	<?php echo $form->close_form; ?>
   </div>
 </div>
+
