@@ -6,7 +6,7 @@ class Usuario extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('mantenimiento/Usuario_model');
+		$this->load->model('mante/Usuario_model');
 		$this->datos = [];
 		$this->datos['scripts'] = array(
 			(object) array('ruta' => 'public/js/mante.js', 'imp' => true));
@@ -14,7 +14,7 @@ class Usuario extends CI_Controller {
 
 	public function index()
 	{
-		$this->datos['vista'] = 'mantenimiento/usuario/cuerpo';
+		$this->datos['vista'] = 'mante/usuario/cuerpo';
 		$this->datos['titulo']  = 'Usuarios';
 		$this->load->view('principal', $this->datos);
 		
@@ -27,7 +27,7 @@ class Usuario extends CI_Controller {
 		$this->load->library('forms/Fusuario');
 
 		$form = new Fusuario();
-		$form->set_accion(base_url("index.php/mantenimiento/usuario/guardar_form/{$usuario}"));
+		$form->set_accion(base_url("index.php/mante/usuario/guardar_form/{$usuario}"));
 		$form->set_rol($this->Config_model->get_rol());
 		$form->set_empresa($this->Config_model->get_empresa());
 
@@ -35,13 +35,14 @@ class Usuario extends CI_Controller {
 			$form->set_registro($u->usuario);
 		}
 		
-		$this->load->view('mantenimiento/usuario/form', [
+		$this->load->view('mante/usuario/form', [
 			'form' => (object) $form->formulario()
 		]);
 	}
 
 	public function guardar_form($usuario="")
 	{
+	
 
 		$dato = array(
 			'exito' => false, 
@@ -57,20 +58,29 @@ class Usuario extends CI_Controller {
 			elemento($_POST, 'direccion') && 
 			elemento($_POST, 'rol') && 
 			elemento($_POST, 'empresa')) {
-
+			
 			$u = new Usuario_model($usuario);
 
-			if ($u->guardarUsuario($_POST)) {
-				$dato['mensaje'] = 'El usuario fue ingresado correctamente';
-				$dato['exito']   = 1;
-				$dato['registro'] = $u->usuario->usuario;
+			if($u->validarUsuario(['alias' => $_POST['alias']])) {
+				
+				if ($u->guardarUsuario($_POST)) {
+					$dato['mensaje'] = 'El usuario fue ingresado correctamente';
+					$dato['exito']   = 1;
+					$dato['registro'] = $u->usuario->usuario;
+
+				} else {
+					$dato['mensaje'] = 'Intente guardar de nuevo el usuario';
+				}
 
 			} else {
-				$dato['mensaje'] = 'Intente guardar de nuevo el usuario';
-			}
+					$dato['mensaje'] = "El usuario <b> {$_POST['alias']} </b> ya esta registrado, intente con uno nuevo";	
+					
+
+			} 
 
 		} else {
 			$dato['mensaje'] = 'Hacen falta datos para continuar';
+		
  		}
 
  		enviarJson($dato);
@@ -78,7 +88,7 @@ class Usuario extends CI_Controller {
 
 	public function ver_lista()
 	{
-		$this->load->view('mantenimiento/usuario/lista', [
+		$this->load->view('mante/usuario/lista', [
 			'resultado' => $this->Usuario_model->get_usuarios()
 		]);
 	}

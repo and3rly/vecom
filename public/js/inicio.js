@@ -68,16 +68,16 @@ function abrirPagina(args)
 
 	switch(args.tipo) {
 		case 1:
-			url = base_url('index.php/mantenimiento/usuario/form')
+			url = base_url('index.php/mante/usuario/form')
 		break
 		case 2:
-			url = base_url('index.php/mantenimiento/usuario/ver_lista')
+			url = base_url('index.php/mante/usuario/ver_lista')
 		break
 		case 3:
-			url = base_url('index.php/mantenimiento/empresa/form') 
+			url = base_url('index.php/mante/empresa/form') 
 		break
 		case 4:
-			url = base_url('index.php/mantenimiento/empresa/ver_lista') 
+			url = base_url('index.php/mante/empresa/ver_lista') 
 		break
 	}
 

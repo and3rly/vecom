@@ -8,8 +8,8 @@
 		</a>
 		<ul class="treeview-menu">
 			<li class="treeview">
-			<li><a href="<?php echo base_url('index.php/mantenimiento/usuario') ?>"><i class="fa fa-user"></i> <span>Usuarios</span></a></li>
-			<li><a href="<?php echo base_url('index.php/mantenimiento/empresa') ?>"><i class="glyphicon glyphicon-home"></i> <span>Empresas</span></a></li>
+			<li><a href="<?php echo base_url('index.php/mante/usuario') ?>"><i class="fa fa-user"></i> <span>Usuarios</span></a></li>
+			<li><a href="<?php echo base_url('index.php/mante/empresa') ?>"><i class="glyphicon glyphicon-home"></i> <span>Empresas</span></a></li>
 		</ul>
 	</li>
 
