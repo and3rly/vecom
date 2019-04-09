@@ -79,6 +79,14 @@ function abrirPagina(args)
 		case 4:
 			url = base_url('index.php/mante/empresa/ver_lista') 
 		break
+
+		case 5:
+			url = base_url('index.php/mantenimiento/cliente/form') 
+		break
+
+		case 6:
+			url = base_url('index.php/mantenimiento/cliente/ver_lista_clientes') 
+		break
 	}
 
 	if (args.registro) { url = url +'/'+ args.registro }
@@ -126,6 +134,12 @@ $(document).on("submit", "#formGuardar", function(e) {
 				abrirPagina({tipo: res.lista, div:'ListaManteEmpresa'})
 				abrirPagina({tipo: res.form, div:'contenidoManteEmpresa'})
 			}
+
+			if (res.form == 6) {
+				abrirPagina({tipo: res.lista, div:'ListaManteCliente'})
+				abrirPagina({tipo: res.form, div:'contenidoManteCliente'})
+			}
+
 
 		} else {
 			$("#btnGuardar").button('reset')

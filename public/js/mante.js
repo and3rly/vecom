@@ -17,6 +17,15 @@ if (lista) {
 }
 
 
+var lista = document.getElementById('ListaManteCliente')
+if (lista) {
+	abrirPagina({
+		div: 'ListaManteCliente',
+		tipo: 6,
+		ccarga : 1
+	})
+}
+
 function anularUsuario(usuario)
 {
 	if (confirm('¿Esta seguro de eliminar el usuario?')) {
@@ -51,6 +60,26 @@ function anularEmpresa(empresa)
 
 			if (res.exito) {
 				abrirPagina({tipo: res.lista, div:'ListaManteEmpresas'})
+			}
+		}
+		xhr.send(datos)
+	}
+}
+
+function anularCliente(cliente)
+{	
+	if (confirm('¿Esta seguro de eliminar el cliente?')) {
+		var xhr   = new XMLHttpRequest()
+		var datos = new FormData()
+		datos.append('cliente', cliente)
+
+		xhr.open("POST", base_url("index.php/mante/cliente/anularcliente"), true)
+		xhr.onload = function() {
+			var res = JSON.parse(this.responseText)
+			notificar(res.mensaje, res.exito);
+
+			if (res.exito) {
+				abrirPagina({tipo: res.lista, div:'ListaManteCliente'})
 			}
 		}
 		xhr.send(datos)
