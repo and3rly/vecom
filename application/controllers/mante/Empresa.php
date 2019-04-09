@@ -6,7 +6,7 @@ class Empresa extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('mantenimiento/Empresa_model');
+		$this->load->model('mante/Empresa_model');
 		$this->datos = [];
 		$this->datos['scripts'] = array(
 			(object) array('ruta' => 'public/js/mante.js', 'imp' => true));
@@ -14,7 +14,7 @@ class Empresa extends CI_Controller {
 
 	public function index()
 	{
-		$this->datos['vista'] = 'mantenimiento/empresa/cuerpo';
+		$this->datos['vista'] = 'mante/empresa/cuerpo';
 		$this->datos['titulo']  = 'Empresas';
 		$this->load->view('principal', $this->datos);
 		
@@ -26,7 +26,7 @@ class Empresa extends CI_Controller {
 		$this->load->library('forms/Fempresa');
 
 		$form = new Fempresa();
-		$form->set_accion(base_url("index.php/mantenimiento/empresa/guardar_form/{$empresa}"));
+		$form->set_accion(base_url("index.php/mante/empresa/guardar_form/{$empresa}"));
 		$form->set_pais($this->Config_model->get_pais());
 		$form->set_moneda($this->Config_model->get_moneda());
 
@@ -34,7 +34,7 @@ class Empresa extends CI_Controller {
 			$form->set_registro($e->empresa);
 		}
 
-		$this->load->view('mantenimiento/empresa/form', [
+		$this->load->view('mante/empresa/form', [
 			'form' => (object) $form->formulario()
 		]);
 

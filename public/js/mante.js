@@ -33,7 +33,7 @@ function anularUsuario(usuario)
 		var datos = new FormData()
 		datos.append('usuario', usuario)
 
-		xhr.open("POST", base_url("index.php/mantenimiento/usuario/anularusuario"), true)
+		xhr.open("POST", base_url("index.php/mante/usuario/anularusuario"), true)
 		xhr.onload = function() {
 			var res = JSON.parse(this.responseText)
 			notificar(res.mensaje, res.exito);

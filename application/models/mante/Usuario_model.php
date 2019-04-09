@@ -20,6 +20,24 @@ class Usuario_model extends CI_Model {
 							  ->row();	 
 	}
 
+	public function validarUsuario($args=[])
+	{
+		if($this->usuario){
+			$this->db->where('usuario <>', $this->usuario->usuario); //llaves
+		}
+
+		$tmp = $this->db
+					->where('alias', $args['alias']) //campos
+					->where('activo', 1)
+					->get('usuario'); //tabla
+		if ($tmp->num_rows() == 0) {
+		return true;
+		}
+
+		return false;
+	}	
+
+
 	public function guardarUsuario($args=[])
 	{
 		if (elemento($args, 'nombre')) {
@@ -34,7 +52,7 @@ class Usuario_model extends CI_Model {
 			$this->db->set('alias', $args['alias']);
 		}
 		if (elemento($args, 'password')){
-			$this->db->set('password', $args['password']);
+			$this->db->set('password', sha1($args['password']));
 		}
 
 		if (elemento($args, 'identificacion')){
